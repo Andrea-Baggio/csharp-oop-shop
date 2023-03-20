@@ -2,6 +2,7 @@
 {
     public int code;
     public string name;
+    public string fullname;
     public string description;
     public double price;
     public int iva;
@@ -10,6 +11,7 @@
     {
         this.code = GenerateRandomCode();
         this.name = name;
+        this.fullname = FullName(code, name);
         this.description = description;
         this.price = price;
         this.iva = FullPrice(price, iva);
@@ -25,6 +27,12 @@
     {
         double ivaAmount = price * iva / 100;
         int result = (int)(price + ivaAmount);
+        return result;
+    }
+
+    private string FullName(int code, string name)
+    {
+        string result = code.ToString() + name;
         return result;
     }
 }
