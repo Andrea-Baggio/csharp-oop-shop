@@ -11,7 +11,7 @@
     {
         this.code = GenerateRandomCode();
         this.name = name;
-        this.fullname = FullName(code, name);
+        this.fullname = FullName(this.code, name);
         this.description = description;
         this.price = price;
         this.iva = FullPrice(price, iva);
@@ -19,8 +19,8 @@
 
     private int GenerateRandomCode()
     {
-        Random random = new Random();
-        return random.Next(1, 999999);
+        Random random = new Random(42);
+        return random.Next(1, 99999);
     }
 
     private int FullPrice(double price, int iva)
@@ -32,7 +32,7 @@
 
     private string FullName(int code, string name)
     {
-        string result = code.ToString() + name;
+        string result = code.ToString() + " " + name;
         return result;
     }
 }
